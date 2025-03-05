@@ -803,7 +803,7 @@ local hasTeleported = false
 spawn(function()
 	while task.wait(1) do
 		pcall(function()
-			if QuestsMission and MissionInProgress == "Quests" then
+			if QuestsMission and MissionInProgress ~= "None" then
 				workspace:WaitForChild("Merchants")
 					:WaitForChild("QuestFishMerchant")
 					:WaitForChild("Clickable")
@@ -819,7 +819,7 @@ function StartMissionLoop()
     spawn(function()
         while task.wait(1) do
             pcall(function()
-                if QuestsMission and MissionInProgress == "Quests" then
+                if QuestsMission and MissionInProgress ~= "None" then
                     local player = game.Players.LocalPlayer
                     local character = player.Character
                     local backpack = player.Backpack
