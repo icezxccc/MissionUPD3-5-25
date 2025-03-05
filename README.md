@@ -620,10 +620,6 @@ function CheckAndStartMission()
 	local playerData = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].Data
 	local missionType = playerData.MissionObjective.Value
 	local currentMission = playerData.MissionObjectiveTarget.Value
-    local DamageMission = false
-    local KillMission = false
-    local QuestsMission = false
-    local EliteKillMission = false
 
 	if missionType ~= "None" and not IsMissionDisabled(currentMission) then
 		AutoDoAllMission = true
@@ -655,6 +651,11 @@ function ActivateHaki(state)
     end)
 end
 
+local DamageMission = false
+local KillMission = false
+local QuestsMission = false
+local EliteKillMission = false
+
 spawn(function()
 	while task.wait(1) do
 		pcall(function()
@@ -666,7 +667,7 @@ spawn(function()
                 AutoDoAllMission = false
             elseif missionType == "Kill" then
                 MissionInProgress = "Kill"
-                KillMission = true
+                KillMission = AutoDoAllMission
                 DamageMission = false
                 QuestsMission = false
                 EliteKillMission = false
@@ -674,7 +675,7 @@ spawn(function()
                 MissionInProgress = "DamageAndMoney"
                 DamageMission = AutoDoAllMission
                 KillMission = false
-                DamageMission = true
+                DamageMission = AutoDoAllMission
                 QuestsMission = false
                 EliteKillMission = false
             elseif missionType == "Quests" then
@@ -682,14 +683,14 @@ spawn(function()
                 QuestsMission = false
                 KillMission = false
                 DamageMission = false
-                QuestsMission = true
+                QuestsMission = AutoDoAllMission
                 EliteKillMission = false
             elseif missionType == "Elite Kill" then
                 MissionInProgress = "Kill"
                 KillMission = false
                 DamageMission = false
                 QuestsMission = false
-                EliteKillMission = true
+                EliteKillMission = AutoDoAllMission
             end
 			if DamageMission then
 				if DamageMission and MissionInProgress == "DamageAndMoney" then
