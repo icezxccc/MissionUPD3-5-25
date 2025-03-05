@@ -660,6 +660,7 @@ spawn(function()
 			if missionType == "None" then
                 MissionInProgress = "None"
                 AutoDoAllMission = false
+                ActivateHaki(false)
             elseif missionType == "Kill" then
                 MissionInProgress = "Kill"
                 KillMission = AutoDoAllMission
