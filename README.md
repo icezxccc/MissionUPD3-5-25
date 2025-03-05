@@ -651,6 +651,11 @@ function ActivateHaki(state)
     end)
 end
 
+local DamageMission = false
+local KillMission = false
+local QuestsMission = false
+local EliteKillMission = false
+
 spawn(function()
 	while task.wait(1) do
 		pcall(function()
@@ -662,16 +667,30 @@ spawn(function()
                 AutoDoAllMission = false
             elseif missionType == "Kill" then
                 MissionInProgress = "Kill"
-                KillMission = AutoDoAllMission
+                KillMission = true
+                DamageMission = false
+                QuestsMission = false
+                EliteKillMission = false
             elseif missionType == "Damage" or missionType == "Money" then
                 MissionInProgress = "DamageAndMoney"
                 DamageMission = AutoDoAllMission
+                KillMission = false
+                DamageMission = true
+                QuestsMission = false
+                EliteKillMission = false
             elseif missionType == "Quests" then
                 MissionInProgress = "Quests"
-                QuestsMission = AutoDoAllMission
+                QuestsMission = false
+                KillMission = false
+                DamageMission = false
+                QuestsMission = true
+                EliteKillMission = false
             elseif missionType == "Elite Kill" then
                 MissionInProgress = "Kill"
-                EliteKillMission = AutoDoAllMission
+                KillMission = false
+                DamageMission = false
+                QuestsMission = false
+                EliteKillMission = true
             end
 			if DamageMission then
 				if DamageMission and MissionInProgress == "DamageAndMoney" then
