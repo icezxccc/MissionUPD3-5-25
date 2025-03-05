@@ -620,6 +620,10 @@ function CheckAndStartMission()
 	local playerData = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].Data
 	local missionType = playerData.MissionObjective.Value
 	local currentMission = playerData.MissionObjectiveTarget.Value
+    local DamageMission = false
+    local KillMission = false
+    local QuestsMission = false
+    local EliteKillMission = false
 
 	if missionType ~= "None" and not IsMissionDisabled(currentMission) then
 		AutoDoAllMission = true
@@ -650,11 +654,6 @@ function ActivateHaki(state)
         end
     end)
 end
-
-local DamageMission = false
-local KillMission = false
-local QuestsMission = false
-local EliteKillMission = false
 
 spawn(function()
 	while task.wait(1) do
