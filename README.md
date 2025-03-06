@@ -612,6 +612,12 @@ Tabs.Farm:AddToggle("Toggle",{
 		AutoDoAllMission = ADAM
 		if ADAM then
 			CheckAndStartMission()
+        else
+            MissionInProgress = "None"
+            DamageMission = false
+            KillMission = false
+            QuestsMission = false
+            EliteKillMission = false
 		end
 	end
 })
