@@ -657,7 +657,7 @@ local QuestsMission = false
 local EliteKillMission = false
 
 spawn(function()
-	while task.wait(1) do
+	while true do
 		pcall(function()
 		local playerData = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].Data
 		local missionType = playerData.MissionObjective.Value
