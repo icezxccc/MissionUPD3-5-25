@@ -612,12 +612,6 @@ Tabs.Farm:AddToggle("Toggle",{
 		AutoDoAllMission = ADAM
 		if ADAM then
 			CheckAndStartMission()
-        else
-            MissionInProgress = "None"
-            DamageMission = false
-            KillMission = false
-            QuestsMission = false
-            EliteKillMission = false
 		end
 	end
 })
@@ -671,6 +665,10 @@ spawn(function()
 			if missionType == "None" then
                 MissionInProgress = "None"
                 AutoDoAllMission = false
+                KillMission = false
+                DamageMission = false
+                QuestsMission = false
+                EliteKillMission = false
             elseif missionType == "Kill" then
                 MissionInProgress = "Kill"
                 KillMission = AutoDoAllMission
