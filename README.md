@@ -657,7 +657,7 @@ local QuestsMission = false
 local EliteKillMission = false
 
 spawn(function()
-	while true do
+	while task.wait(1) do
 		pcall(function()
 		local playerData = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].Data
 		local missionType = playerData.MissionObjective.Value
@@ -665,10 +665,6 @@ spawn(function()
 			if missionType == "None" then
                 MissionInProgress = "None"
                 AutoDoAllMission = false
-                KillMission = false
-                DamageMission = false
-                QuestsMission = false
-                EliteKillMission = false
             elseif missionType == "Kill" then
                 MissionInProgress = "Kill"
                 KillMission = AutoDoAllMission
